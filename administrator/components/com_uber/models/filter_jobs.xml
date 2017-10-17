@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter">
+        <field name="search" type="text" hint="COM_UBER_SEARCH_FILTER_SUBMIT"
+               label="COM_USERS_FILTER_SEARCH_DESC"
+               class="js-stools-search-string" />
+
+        <field name="state"
+               type="status"
+               label="COM_UBER_FILTER_STATE"
+               description="COM_UBER_FILTER_STATE_DESC"
+               onchange="this.form.submit();"
+        >
+            <option value="">JOPTION_SELECT_PUBLISHED</option>
+        </field>
+		<field name="sold"
+               type="list"
+               label="COM_UBER_FILTER_SOLD"
+               description="COM_UBER_FILTER_SOLD"
+               onchange="this.form.submit();"
+        >
+            <option value="0">COM_UBER_JOBS_SOLD_FILTER</option>
+			<option value="1">COM_UBER_JOBS_PROCESSING</option>
+			<option value="2">COM_UBER_JOBS_FINISHED</option>
+			<option value="3">COM_UBER_JOBS_AVAILABLE</option>
+        </field>
+
+
+<field name="pick_up_time_from_dateformat" label="COM_UBER_LIST_LBL_JOB_PICK_UP_TIME_FILTER_FROM" type="calendar" onchange="this.form.submit();" filter="safehtml" class="inputbox" showtime="true" translateformat="true" hint="COM_UBER_LIST_LBL_JOB_PICK_UP_TIME_FILTER_FROM"/>
+<field name="pick_up_time_to_dateformat" label="COM_UBER_LIST_LBL_JOB_PICK_UP_TIME_FILTER_TO" type="calendar" onchange="this.form.submit();" filter="safehtml" class="inputbox" showtime="true" translateformat="true" hint="COM_UBER_LIST_LBL_JOB_PICK_UP_TIME_FILTER_TO"/>
+
+
+    </fields>
+
+    <fields name="list">
+
+        <field name="fullordering"
+               type="list"
+               label="COM_CONTENT_LIST_FULL_ORDERING"
+               description="COM_CONTENT_LIST_FULL_ORDERING_DESC"
+               onchange="this.form.submit();"
+               default="a.id DESC"
+        >
+            <option value="">JGLOBAL_SORT_BY</option>
+            <option value="a.`id` ASC">ID Ascending</option><option value="a.`id` DESC">ID Descending</option><option value="a.`ordering` ASC">Order Ascending</option><option value="a.`ordering` DESC">Order Descending</option><option value="a.`state` ASC">State Ascending</option><option value="a.`state` DESC">State Descending</option><option value="a.`customer_name` ASC">Customer Name Ascending</option><option value="a.`customer_name` DESC">Customer Name Descending</option><option value="a.`customer_phone` ASC">Customer Phone Ascending</option><option value="a.`customer_phone` DESC">Customer Phone Descending</option><option value="a.`number_passenger` ASC">Number Passengers Ascending</option><option value="a.`number_passenger` DESC">Number Passengers Descending</option><option value="a.`flight_number` ASC">Flight Number Ascending</option><option value="a.`flight_number` DESC">Flight Number Descending</option><option value="a.`district` ASC">District Ascending</option><option value="a.`district` DESC">District Descending</option><option value="a.`pick_up_location` ASC">Pick Up Location Ascending</option><option value="a.`pick_up_location` DESC">Pick Up Location Descending</option><option value="a.`pick_up_time` ASC">Pick Up Times Ascending</option><option value="a.`pick_up_time` DESC">Pick Up Times Descending</option><option value="a.`drop_location` ASC">Drop Location Ascending</option><option value="a.`drop_location` DESC">Drop Location Descending</option><option value="a.`price` ASC">Price Ascending</option><option value="a.`price` DESC">Price Descending</option>
+
+        </field>
+
+        <field name="limit"
+               type="limitbox"
+               class="input-mini"
+               default="25"
+               onchange="this.form.submit();"
+        />
+
+    </fields>
+
+</form>

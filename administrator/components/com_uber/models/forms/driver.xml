@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+  <fieldset>
+    <field name="id" type="text" readonly="true" class="readonly" default="0" description="JGLOBAL_FIELD_ID_DESC"/>
+    <field name="ordering"/>
+    <field name="state" default="1" type="list" label="JSTATUS" description="JFIELD_PUBLISHED_DESC" class="inputbox" size="1">
+      <option value="1">JPUBLISHED</option>
+      <option value="0">JUNPUBLISHED</option>
+      <option value="2">JARCHIVED</option>
+      <option value="-2">JTRASHED</option>
+    </field>
+    <field name="checked_out" type="hidden" filter="unset"/>
+    <field name="checked_out_time" default="0000-00-00 00:00:00" type="hidden" filter="unset"/>
+    <field name="created_by" type="createdby" default="0" label="COM_UBER_FORM_LBL_DRIVER_CREATED_BY" description="COM_UBER_FORM_DESC_DRIVER_CREATED_BY" hidden="true" hint="COM_UBER_FORM_LBL_DRIVER_CREATED_BY"/>
+    <field name="modified_by" type="modifiedby" default="0" label="COM_UBER_FORM_LBL_DRIVER_MODIFIED_BY" description="COM_UBER_FORM_DESC_DRIVER_MODIFIED_BY" hidden="true" hint="COM_UBER_FORM_LBL_DRIVER_MODIFIED_BY"/>
+    <field name="phone" filter="safehtml" type="text" required="true" label="COM_UBER_FORM_LBL_DRIVER_PHONE" description="COM_UBER_FORM_DESC_DRIVER_PHONE" hint="COM_UBER_FORM_LBL_DRIVER_PHONE"/>
+    <field name="title" filter="safehtml" type="text" required="true" label="COM_UBER_FORM_LBL_DRIVER_TITLE" description="COM_UBER_FORM_DESC_DRIVER_TITLE" hint="COM_UBER_FORM_LBL_DRIVER_TITLE"/>
+    <field name="avatar" type="FileMultiple" label="COM_UBER_FORM_LBL_DRIVER_AVATAR" description="COM_UBER_FORM_DESC_DRIVER_AVATAR" hint="COM_UBER_FORM_LBL_DRIVER_AVATAR"/>
+    <field name="id_card" filter="safehtml" type="text" required="true" label="COM_UBER_FORM_LBL_DRIVER_ID_CARD" description="COM_UBER_FORM_DESC_DRIVER_ID_CARD" hint="COM_UBER_FORM_LBL_DRIVER_ID_CARD"/>
+    <field name="number_plates" filter="safehtml" type="text" required="true" label="COM_UBER_FORM_LBL_DRIVER_NUMBER_PLATES" description="COM_UBER_FORM_DESC_DRIVER_NUMBER_PLATES" hint="COM_UBER_FORM_LBL_DRIVER_NUMBER_PLATES"/>
+    <field name="number_seat" default="1" type="list" label="COM_UBER_FORM_LBL_DRIVER_NUMBER_SEAT" description="COM_UBER_FORM_DESC_DRIVER_NUMBER_SEAT" hint="COM_UBER_FORM_LBL_DRIVER_NUMBER_SEAT">
+      <option value="1">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_1</option>
+      <option value="2">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_2</option>
+      <option value="3">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_3</option>
+      <option value="4">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_4</option>
+      <option value="5">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_5</option>
+      <option value="6">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_6</option>
+      <option value="7">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_7</option>
+      <option value="8">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_8</option>
+      <option value="9">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_9</option>
+      <option value="10">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_10</option>
+    </field>
+    <field name="car_type" filter="safehtml" type="text" label="COM_UBER_FORM_LBL_DRIVER_CAR_TYPE" description="COM_UBER_FORM_DESC_DRIVER_CAR_TYPE" hint="COM_UBER_FORM_LBL_DRIVER_CAR_TYPE"/>
+    <field name="license" filter="safehtml" type="text"  label="COM_UBER_FORM_LBL_DRIVER_LICENSE" description="COM_UBER_FORM_DESC_DRIVER_LICENSE" hint="COM_UBER_FORM_LBL_DRIVER_LICENSE"/>
+    <field name="vehicle_registration" type="FileMultiple" label="COM_UBER_FORM_LBL_DRIVER_VEHICLE_REGISTRATION" description="COM_UBER_FORM_DESC_DRIVER_VEHICLE_REGISTRATION" hint="COM_UBER_FORM_LBL_DRIVER_VEHICLE_REGISTRATION"/>
+    <field name="address" filter="safehtml" type="text" label="COM_UBER_FORM_LBL_DRIVER_ADDRESS" description="COM_UBER_FORM_DESC_DRIVER_ADDRESS" hint="COM_UBER_FORM_LBL_DRIVER_ADDRESS"/>
+    <field name="balance" filter="safehtml" type="number" label="COM_UBER_FORM_LBL_DRIVER_BALANCE" description="COM_UBER_FORM_DESC_DRIVER_BALANCE" hint="COM_UBER_FORM_LBL_DRIVER_BALANCE"/>
+    <field name="version_note" type="text" label="JGLOBAL_FIELD_VERSION_NOTE_LABEL" description="JGLOBAL_FIELD_VERSION_NOTE_DESC" class="inputbox" size="45" labelclass="control-label"/>
+  </fieldset>
+</form>

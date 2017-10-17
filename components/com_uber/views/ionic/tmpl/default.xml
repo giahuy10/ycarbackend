@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="COM_UBER_TITLE_ITEM_VIEW_BOUGHT" option="View">
+        <message>
+                        <![CDATA[COM_UBER_TITLE_ITEM_VIEW_JOB_DESC]]>
+        </message>
+    </layout>
+  
+</metadata>

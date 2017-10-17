@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="1.7" type="plugin" group="system">
+	<name>Joomla! Hello SEF for alias title</name>
+	<author>Viet Nguyenhoang</author>
+	<creationDate>August 2011</creationDate>
+	<copyright>Copyright (C) 2005 - 2011 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>email2@luyenkim.net</authorEmail>
+	<authorUrl>www.vatlieu.us</authorUrl>
+	<version>1.6.0</version>
+	<description>Vietnamse SEO/SEF - Tạo tiếng việt không dấu khi tạo link thân thiện!</description>
+	<files>
+		<filename plugin="jhellosef">jhellosef.php</filename>
+		<filename>index.html</filename>
+	</files>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="vi_trans" type="list"
+					default="1"
+					description="If yes, the plugin transliterates the utf-8 Vietnamese accent titles into Latin alias"
+					label="Vietnamese transformed text"
+				>
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+
+				<field name="transformtext" type="textarea"
+					default=""
+					description="For example: Â=>A,â=>a,ô=>o,б=>b,ж=>zh,Я=>YA..."
+					label="Other transformed characters"
+				/>
+			</fieldset>
+		</fields>
+	</config>	
+</extension>

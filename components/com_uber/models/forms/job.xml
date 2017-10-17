@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+  <fieldset>
+    <field name="id" type="text" readonly="true" class="readonly" default="0" description="JGLOBAL_FIELD_ID_DESC"/>
+    <field name="ordering"/>
+    <field name="state" default="1" type="list" label="JSTATUS" description="JFIELD_PUBLISHED_DESC" class="inputbox" size="1">
+      <option value="1">JPUBLISHED</option>
+      <option value="0">JUNPUBLISHED</option>
+      <option value="2">JARCHIVED</option>
+      <option value="-2">JTRASHED</option>
+    </field>
+    <field name="checked_out" type="hidden" filter="unset"/>
+    <field name="checked_out_time" default="0000-00-00 00:00:00" type="hidden" filter="unset"/>
+    <field name="created_by" type="createdby" default="0" label="COM_UBER_FORM_LBL_JOB_CREATED_BY" description="COM_UBER_FORM_DESC_JOB_CREATED_BY" hidden="true" hint="COM_UBER_FORM_LBL_JOB_CREATED_BY"/>
+    <field name="modified_by" type="modifiedby" default="0" label="COM_UBER_FORM_LBL_JOB_MODIFIED_BY" description="COM_UBER_FORM_DESC_JOB_MODIFIED_BY" hidden="true" hint="COM_UBER_FORM_LBL_JOB_MODIFIED_BY"/>
+    <field name="customer_name" filter="safehtml" type="text" label="COM_UBER_FORM_LBL_JOB_CUSTOMER_NAME" description="COM_UBER_FORM_DESC_JOB_CUSTOMER_NAME" hint="COM_UBER_FORM_LBL_JOB_CUSTOMER_NAME"/>
+    <field name="customer_phone" filter="safehtml" type="text" label="COM_UBER_FORM_LBL_JOB_CUSTOMER_PHONE" description="COM_UBER_FORM_DESC_JOB_CUSTOMER_PHONE" hint="COM_UBER_FORM_LBL_JOB_CUSTOMER_PHONE"/>
+    <field name="number_passenger" filter="safehtml" type="number" label="COM_UBER_FORM_LBL_JOB_NUMBER_PASSENGER" description="COM_UBER_FORM_DESC_JOB_NUMBER_PASSENGER" hint="COM_UBER_FORM_LBL_JOB_NUMBER_PASSENGER"/>
+    <field name="flight_number" filter="safehtml" type="text" label="COM_UBER_FORM_LBL_JOB_FLIGHT_NUMBER" description="COM_UBER_FORM_DESC_JOB_FLIGHT_NUMBER" hint="COM_UBER_FORM_LBL_JOB_FLIGHT_NUMBER"/>
+    <field name="district" multiple="true" type="list" label="COM_UBER_FORM_LBL_JOB_DISTRICT" description="COM_UBER_FORM_DESC_JOB_DISTRICT" hint="COM_UBER_FORM_LBL_JOB_DISTRICT">
+      <option value="1">COM_UBER_JOBS_DISTRICT_OPTION_1</option>
+      <option value="2">COM_UBER_JOBS_DISTRICT_OPTION_2</option>
+      <option value="3">COM_UBER_JOBS_DISTRICT_OPTION_3</option>
+      <option value="4">COM_UBER_JOBS_DISTRICT_OPTION_4</option>
+      <option value="5">COM_UBER_JOBS_DISTRICT_OPTION_5</option>
+      <option value="6">COM_UBER_JOBS_DISTRICT_OPTION_6</option>
+      <option value="7">COM_UBER_JOBS_DISTRICT_OPTION_7</option>
+      <option value="8">COM_UBER_JOBS_DISTRICT_OPTION_8</option>
+      <option value="9">COM_UBER_JOBS_DISTRICT_OPTION_9</option>
+      <option value="10">COM_UBER_JOBS_DISTRICT_OPTION_10</option>
+      <option value="11">COM_UBER_JOBS_DISTRICT_OPTION_11</option>
+      <option value="12">COM_UBER_JOBS_DISTRICT_OPTION_12</option>
+      <option value="13">COM_UBER_JOBS_DISTRICT_OPTION_13</option>
+      <option value="14">COM_UBER_JOBS_DISTRICT_OPTION_14</option>
+      <option value="15">COM_UBER_JOBS_DISTRICT_OPTION_15</option>
+      <option value="16">COM_UBER_JOBS_DISTRICT_OPTION_16</option>
+      <option value="17">COM_UBER_JOBS_DISTRICT_OPTION_17</option>
+      <option value="18">COM_UBER_JOBS_DISTRICT_OPTION_18</option>
+      <option value="19">COM_UBER_JOBS_DISTRICT_OPTION_19</option>
+      <option value="20">COM_UBER_JOBS_DISTRICT_OPTION_20</option>
+      <option value="21">COM_UBER_JOBS_DISTRICT_OPTION_21</option>
+      <option value="22">COM_UBER_JOBS_DISTRICT_OPTION_22</option>
+      <option value="23">COM_UBER_JOBS_DISTRICT_OPTION_23</option>
+      <option value="24">COM_UBER_JOBS_DISTRICT_OPTION_24</option>
+      <option value="25">COM_UBER_JOBS_DISTRICT_OPTION_25</option>
+      <option value="26">COM_UBER_JOBS_DISTRICT_OPTION_26</option>
+      <option value="27">COM_UBER_JOBS_DISTRICT_OPTION_27</option>
+      <option value="28">COM_UBER_JOBS_DISTRICT_OPTION_28</option>
+      <option value="29">COM_UBER_JOBS_DISTRICT_OPTION_29</option>
+      <option value="30">COM_UBER_JOBS_DISTRICT_OPTION_30</option>
+    </field>
+    <field name="pick_up_location_back_up" multiple="true" formsource="administrator/components/com_uber/models/forms/subform_com_pick_up_point.xml" layout="joomla.form.field.subform.repeatable-table" type="subform" label="COM_UBER_FORM_LBL_JOB_PICK_UP_LOCATION" description="COM_UBER_FORM_DESC_JOB_PICK_UP_LOCATION" hint="COM_UBER_FORM_LBL_JOB_PICK_UP_LOCATION"/>
+	
+	    <field name="drop_location_back_up" multiple="true" formsource="administrator/components/com_uber/models/forms/subform_com_pick_up_point.xml" layout="joomla.form.field.subform.repeatable-table" type="subform" label="COM_UBER_FORM_LBL_JOB_DROP_LOCATION" description="COM_UBER_FORM_DESC_JOB_DROP_LOCATION" hint="COM_UBER_FORM_LBL_JOB_DROP_UP_LOCATION"/>
+		
+		  <field name="pick_up_locatio" multiple="true"  type="text" label="COM_UBER_FORM_LBL_JOB_PICK_UP_LOCATION" description="COM_UBER_FORM_DESC_JOB_PICK_UP_LOCATION" hint="COM_UBER_FORM_LBL_JOB_PICK_UP_LOCATION"/>
+	
+	    <field name="drop_location_back_up" type="text" label="COM_UBER_FORM_LBL_JOB_DROP_LOCATION" description="COM_UBER_FORM_DESC_JOB_DROP_LOCATION" hint="COM_UBER_FORM_LBL_JOB_DROP_UP_LOCATION"/>
+    <field name="pick_up_time" class="inputbox" timeformat="24" filter="server_utc" showtime="true" singleheader="true" todaybutton="true" weeknumbers="true" filltable="true" translateformat="true" type="calendar" label="COM_UBER_FORM_LBL_JOB_PICK_UP_TIME" description="COM_UBER_FORM_DESC_JOB_PICK_UP_TIME" hint="COM_UBER_FORM_LBL_JOB_PICK_UP_TIME"/>
+   <field name="number_seat" default="1" type="list" label="COM_UBER_FORM_LBL_DRIVER_NUMBER_SEAT" description="COM_UBER_FORM_DESC_DRIVER_NUMBER_SEAT" hint="COM_UBER_FORM_LBL_DRIVER_NUMBER_SEAT">
+      <option value="1">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_1</option>
+      <option value="2">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_2</option>
+      <option value="3">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_3</option>
+      <option value="4">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_4</option>
+      <option value="5">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_5</option>
+      <option value="6">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_6</option>
+      <option value="7">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_7</option>
+      <option value="8">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_8</option>
+      <option value="9">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_9</option>
+      <option value="10">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_10</option>
+    </field>
+	  <field name="available" default="0" type="list" label="Bán ngay" >
+      <option value="0">Không</option>
+      <option value="1">Có</option>
+    
+    </field>
+    <field name="price" filter="safehtml" type="text" label="COM_UBER_FORM_LBL_JOB_PRICE" description="COM_UBER_FORM_DESC_JOB_PRICE" hint="COM_UBER_FORM_LBL_JOB_PRICE"/>
+	<field name="fee" filter="safehtml" type="text" label="COM_UBER_FORM_LBL_JOB_FEE" description="COM_UBER_FORM_DESC_JOB_FEE" hint="COM_UBER_FORM_LBL_JOB_FEE"/>
+	<field name="comment" type="textarea" default="" label="Ghi chú cho tài xế" description="" rows="10" cols="5" filter="raw"/>
+
+	<field
+    name="driver_id"
+    type="sql"
+    default="0"
+    label="Chọn tài xế"
+    query="SELECT id, title FROM #__uber_driver"
+    key_field="id"
+    value_field="title"
+   
+    >
+    <option value="">Chọn tài xế</option>
+</field>
+    <field name="version_note" type="text" label="JGLOBAL_FIELD_VERSION_NOTE_LABEL" description="JGLOBAL_FIELD_VERSION_NOTE_DESC" class="inputbox" size="45" labelclass="control-label"/>
+  </fieldset>
+</form>

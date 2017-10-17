@@ -1,0 +1,80 @@
+.job-item > div {
+    padding: 5px 10px;
+    background: #e5e5e5;
+    margin: 2px 0;
+}
+.fullscreen.landing.parallax{
+	background-image: url(../images/bg3.jpg); background-size: 1349px 899.108px; background-position: 50% -130.905px; background-attachment: fixed;
+}
+.row.features.text-center {
+    padding: 20px 0;
+}
+h3.h4 {
+    font-weight: bold;
+}
+div#carssection {
+    background: #e5e5e5;
+}
+.carssections img {
+    width: 100%;
+    height: auto;
+}
+div#pricing {
+    padding: 70px 0;
+}
+span.userbalancer {    display: inline-block;    padding: 10px;    color: #fff;}.navbar-default .navbar-collapse, .navbar-default .navbar-form {    border-color: #e7e7e7;    max-height: initial;}.navbar-header {    background: #24336c;    color: #fff;}a.navbar-brand.site-name {    color: #fff;    padding: 15px;}.collapse.mystyle {    display: block;}.driver_active li.item-101.default {    display: none;}.job-item.disable > div {   }
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+    color: #ffffff;
+  
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #fff;
+}
+.btn-info {
+    color: #fff;
+    background-color: #ed2236;
+    border-color: #ed2236;
+    border-radius: 5px !important;
+}
+.btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .open .dropdown-toggle.btn-info {
+    color: #fff;
+    background-color: #ed2236;
+    border-color: #ed2236;
+}
+input#remember {
+    height: auto !important;
+}
+button#jform_pick_up_time_btn {
+    background: url(http://www.woodlandsonline.com/cnt/files/site/pg/addtoCalendar_icon.png);
+    width: 50px;
+    height: 50px;
+    padding: 0;
+}
+.table > tbody > tr > td.day {
+    padding: 5px;
+}
+input {
+   
+    height: auto !important;
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    background: transparent;
+    color: #158715;
+}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background-color: transparent;
+}
+.alert-success {
+    background-color: #24336c;
+    border-color: #d6e9c6;
+    color: #e60000;
+	    margin: 0 -15px;
+}
+.comment-block {
+    border: 1px dotted red;
+    background: #ffdf00;
+	padding: 5px 10px;
+}
+.panel-title>a {
+    display: block;
+}

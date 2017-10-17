@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter">
+        <field name="search" type="text" hint="COM_UBER_SEARCH_FILTER_SUBMIT"
+               label="COM_USERS_FILTER_SEARCH_DESC"
+               class="js-stools-search-string" />
+
+        <field name="district" label="COM_UBER_FORM_LBL_JOB_DISTRICT" type="list" onchange="this.form.submit();" default="COM_UBER_JOBS_DISTRICT_FILTER">
+  <option value="">COM_UBER_JOBS_DISTRICT_FILTER</option>
+  <option value="1">COM_UBER_JOBS_DISTRICT_OPTION_1</option>
+  <option value="2">COM_UBER_JOBS_DISTRICT_OPTION_2</option>
+  <option value="3">COM_UBER_JOBS_DISTRICT_OPTION_3</option>
+  <option value="4">COM_UBER_JOBS_DISTRICT_OPTION_4</option>
+  <option value="5">COM_UBER_JOBS_DISTRICT_OPTION_5</option>
+  <option value="6">COM_UBER_JOBS_DISTRICT_OPTION_6</option>
+  <option value="7">COM_UBER_JOBS_DISTRICT_OPTION_7</option>
+  <option value="8">COM_UBER_JOBS_DISTRICT_OPTION_8</option>
+  <option value="9">COM_UBER_JOBS_DISTRICT_OPTION_9</option>
+  <option value="10">COM_UBER_JOBS_DISTRICT_OPTION_10</option>
+  <option value="11">COM_UBER_JOBS_DISTRICT_OPTION_11</option>
+  <option value="12">COM_UBER_JOBS_DISTRICT_OPTION_12</option>
+  <option value="13">COM_UBER_JOBS_DISTRICT_OPTION_13</option>
+  <option value="14">COM_UBER_JOBS_DISTRICT_OPTION_14</option>
+  <option value="15">COM_UBER_JOBS_DISTRICT_OPTION_15</option>
+  <option value="16">COM_UBER_JOBS_DISTRICT_OPTION_16</option>
+  <option value="17">COM_UBER_JOBS_DISTRICT_OPTION_17</option>
+  <option value="18">COM_UBER_JOBS_DISTRICT_OPTION_18</option>
+  <option value="19">COM_UBER_JOBS_DISTRICT_OPTION_19</option>
+  <option value="20">COM_UBER_JOBS_DISTRICT_OPTION_20</option>
+  <option value="21">COM_UBER_JOBS_DISTRICT_OPTION_21</option>
+  <option value="22">COM_UBER_JOBS_DISTRICT_OPTION_22</option>
+  <option value="23">COM_UBER_JOBS_DISTRICT_OPTION_23</option>
+  <option value="24">COM_UBER_JOBS_DISTRICT_OPTION_24</option>
+  <option value="25">COM_UBER_JOBS_DISTRICT_OPTION_25</option>
+  <option value="26">COM_UBER_JOBS_DISTRICT_OPTION_26</option>
+  <option value="27">COM_UBER_JOBS_DISTRICT_OPTION_27</option>
+  <option value="28">COM_UBER_JOBS_DISTRICT_OPTION_28</option>
+  <option value="29">COM_UBER_JOBS_DISTRICT_OPTION_29</option>
+  <option value="30">COM_UBER_JOBS_DISTRICT_OPTION_30</option>
+</field>
+<field name="pick_up_time_from_dateformat" label="COM_UBER_LIST_LBL_JOB_PICK_UP_TIME_FILTER_FROM" type="calendar" onchange="this.form.submit();" filter="safehtml" class="inputbox" showtime="true" translateformat="true" hint="COM_UBER_LIST_LBL_JOB_PICK_UP_TIME_FILTER_FROM"/>
+<field name="pick_up_time_to_dateformat" label="COM_UBER_LIST_LBL_JOB_PICK_UP_TIME_FILTER_TO" type="calendar" onchange="this.form.submit();" filter="safehtml" class="inputbox" showtime="true" translateformat="true" hint="COM_UBER_LIST_LBL_JOB_PICK_UP_TIME_FILTER_TO"/>
+
+
+    </fields>
+</form>

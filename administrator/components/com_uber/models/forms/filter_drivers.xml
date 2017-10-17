@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter">
+        <field name="search" type="text" hint="COM_UBER_SEARCH_FILTER_SUBMIT"
+               label="COM_USERS_FILTER_SEARCH_DESC"
+               class="js-stools-search-string" />
+
+        <field name="state"
+               type="status"
+               label="COM_UBER_FILTER_STATE"
+               description="COM_UBER_FILTER_STATE_DESC"
+               onchange="this.form.submit();"
+        >
+            <option value="">JOPTION_SELECT_PUBLISHED</option>
+        </field>
+
+        <field name="number_seat" label="COM_UBER_FORM_LBL_DRIVER_NUMBER_SEAT" type="list" onchange="this.form.submit();" default="COM_UBER_DRIVERS_NUMBER_SEAT_FILTER">
+  <option value="">COM_UBER_DRIVERS_NUMBER_SEAT_FILTER</option>
+  <option value="1">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_1</option>
+  <option value="2">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_2</option>
+  <option value="3">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_3</option>
+  <option value="4">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_4</option>
+  <option value="5">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_5</option>
+  <option value="6">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_6</option>
+  <option value="7">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_7</option>
+  <option value="8">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_8</option>
+  <option value="9">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_9</option>
+  <option value="10">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_10</option>
+</field>
+
+
+    </fields>
+
+    <fields name="list">
+
+        <field name="fullordering"
+               type="list"
+               label="COM_CONTENT_LIST_FULL_ORDERING"
+               description="COM_CONTENT_LIST_FULL_ORDERING_DESC"
+               onchange="this.form.submit();"
+               default="a.id DESC"
+        >
+            <option value="">JGLOBAL_SORT_BY</option>
+            <option value="a.`id` ASC">ID Ascending</option><option value="a.`id` DESC">ID Descending</option><option value="a.`ordering` ASC">Order Ascending</option><option value="a.`ordering` DESC">Order Descending</option><option value="a.`state` ASC">State Ascending</option><option value="a.`state` DESC">State Descending</option><option value="a.`phone` ASC">Phone Ascending</option><option value="a.`phone` DESC">Phone Descending</option><option value="a.`title` ASC">Title Ascending</option><option value="a.`title` DESC">Title Descending</option><option value="a.`avatar` ASC">Avatar Ascending</option><option value="a.`avatar` DESC">Avatar Descending</option><option value="a.`id_card` ASC">Id Card Ascending</option><option value="a.`id_card` DESC">Id Card Descending</option><option value="a.`number_plates` ASC">Number Plates Ascending</option><option value="a.`number_plates` DESC">Number Plates Descending</option><option value="a.`number_seat` ASC">Seats Ascending</option><option value="a.`number_seat` DESC">Seats Descending</option><option value="a.`car_type` ASC">Car Type Ascending</option><option value="a.`car_type` DESC">Car Type Descending</option><option value="a.`license` ASC">License Ascending</option><option value="a.`license` DESC">License Descending</option><option value="a.`balance` ASC">Balance Ascending</option><option value="a.`balance` DESC">Balance Descending</option>
+
+        </field>
+
+        <field name="limit"
+               type="limitbox"
+               class="input-mini"
+               default="25"
+               onchange="this.form.submit();"
+        />
+
+    </fields>
+
+</form>

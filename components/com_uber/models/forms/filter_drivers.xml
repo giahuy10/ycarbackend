@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter">
+        <field name="search" type="text" hint="COM_UBER_SEARCH_FILTER_SUBMIT"
+               label="COM_USERS_FILTER_SEARCH_DESC"
+               class="js-stools-search-string" />
+
+        <field name="number_seat" label="COM_UBER_FORM_LBL_DRIVER_NUMBER_SEAT" type="list" onchange="this.form.submit();" default="COM_UBER_DRIVERS_NUMBER_SEAT_FILTER">
+  <option value="">COM_UBER_DRIVERS_NUMBER_SEAT_FILTER</option>
+  <option value="1">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_1</option>
+  <option value="2">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_2</option>
+  <option value="3">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_3</option>
+  <option value="4">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_4</option>
+  <option value="5">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_5</option>
+  <option value="6">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_6</option>
+  <option value="7">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_7</option>
+  <option value="8">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_8</option>
+  <option value="9">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_9</option>
+  <option value="10">COM_UBER_DRIVERS_NUMBER_SEAT_OPTION_10</option>
+</field>
+
+
+    </fields>
+</form>
