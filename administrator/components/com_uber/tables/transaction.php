@@ -216,8 +216,37 @@ class UberTabletransaction extends JTable
 		{
 			$this->ordering = self::getNextOrder();
 		}
+	    if (!$this->sent_notice) {
+	        $title = "Số dư tài khoản thay đổi";
+		    switch ($this->type) {
+		        case 1:
+		            $sign = "+";
+		            break;
+		        case 2:
+		            if ($this->value > 0) {
+        		        $sign = "+";
+        		    }else {
+        		        $sign = "-";
+        		    }
+        		    break;
+        		case 3:
+        		    if ($this->value > 0) {
+        		        $sign = "-";
+        		    }else {
+        		        $sign = "+";
+        		    }
+        		     break;
+        		default: {
+        		    $sign = "+";
+        		}     
+		    }
+		   $player_ids = UberHelper::get_player_id($this->driver_id);
+			$message =$sign.number_format(abs($this->value))."đ ".$this->comment;
+			UberHelper::sendMessage($title,$message,$player_ids);
+			$this->sent_notice = 1;
 		
-		
+	   }
+		    
 
 		return parent::check();
 	}

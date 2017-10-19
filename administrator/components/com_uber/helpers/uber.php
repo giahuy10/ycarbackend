@@ -79,6 +79,132 @@ class UberHelper
 	
 	return $result_arr;
 } 
+public static function format_price($price) {
+    $price = number_format($price)."đ";
+	return $price; 
+}
+public static function get_player_id ($driver_id) {
+	     $db = JFactory::getDbo();
+		// Create a new query object.
+		$query = $db->getQuery(true);
+
+		// Select all records from the user profile table where key begins with "custom.".
+		// Order it by the ordering field.
+		$query->select($db->quoteName('player_id'));
+		$query->from($db->quoteName('#__uber_playerid'));
+		$query->where($db->quoteName('driver_id') . ' = '. $db->quote($driver_id));
+	     $query->order('id DESC');
+		
+
+		// Reset the query using our newly populated query object.
+		$db->setQuery($query);
+
+		// Load the results as a list of stdClass objects (see later for more options on retrieving data).
+		$results = $db->loadColumn();
+		return $results;
+	}
+		public static function sendMessage($title, $content,$player_id){
+		$headings = array(
+			"en" => $title
+			);
+		$content = array(
+			"en" => $content
+			);	
+		if ($player_id) {
+		   
+		    $fields = array(
+			'app_id' => "9c611d5c-e51f-4f51-bb9f-b8d679153272",
+			 'include_player_ids' => $player_id,
+			 'data' => array("foo" => "bar"),
+			'contents' => $content,
+			'headings' => $headings
+		    );
+		}else {
+		    $fields = array(
+			'app_id' => "9c611d5c-e51f-4f51-bb9f-b8d679153272",
+			'included_segments' => array('All'),
+             'data' => array("foo" => "bar"),
+			'contents' => $content,
+			'headings' => $headings
+		    );
+		}
+		
+		
+		$fields = json_encode($fields);
+   // print("\nJSON sent:\n");
+   // print($fields);
+		
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, "https://onesignal.com/api/v1/notifications");
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json; charset=utf-8',
+												   'Authorization: Basic OTg5YjEzZDEtYTcxNC00MDA0LWFhMzYtNDhlMDU0NjhhMzIx'));
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+		curl_setopt($ch, CURLOPT_HEADER, FALSE);
+		curl_setopt($ch, CURLOPT_POST, TRUE);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+
+		$response = curl_exec($ch);
+		curl_close($ch);
+		
+		return $response;
+	}
+    public static function get_job_detail($id) {
+		$db = JFactory::getDbo();
+
+		// Create a new query object.
+		$query = $db->getQuery(true);
+
+		// Select all records from the user profile table where key begins with "custom.".
+		// Order it by the ordering field.
+		$query->select('*');
+		$query->from($db->quoteName('#__uber_job'));
+		$query->where($db->quoteName('id') . ' = '. $id);
+	
+		
+		//$query->where($db->quoteName('driver_id') . ' = 0');
+
+		// Reset the query using our newly populated query object.
+		$db->setQuery($query);
+
+		// Load the results as a list of stdClass objects (see later for more options on retrieving data).
+		$results = $db->loadObject();
+		
+			return $results;
+	}
+
+    public static function send_sms($YourPhone,$Content) {
+        	$APIKey="2A00924E0B265978F73EB9B28088DF";
+		$SecretKey="C60751C63C7740DCD5F0886E3DCA18";
+	
+		
+		
+		$SendContent=urlencode($Content);
+		$data="http://rest.esms.vn/MainService.svc/json/SendMultipleMessage_V4_get?Phone=$YourPhone&ApiKey=$APIKey&SecretKey=$SecretKey&Content=$SendContent&SmsType=2&Brandname=YCAR.VN";
+		
+		$curl = curl_init($data); 
+		curl_setopt($curl, CURLOPT_FAILONERROR, true); 
+		curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true); 
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true); 
+		$result = curl_exec($curl); 
+			
+		$obj = json_decode($result,true);
+		if($obj['CodeResult']==100)
+		{
+			print "<br>";
+			print "CodeResult:".$obj['CodeResult'];
+			print "<br>";
+			print "CountRegenerate:".$obj['CountRegenerate'];
+			print "<br>";     
+			print "SMSID:".$obj['SMSID'];
+			print "<br>";
+		}
+		else
+		{
+			print "ErrorMessage:".$obj['ErrorMessage'];
+		}
+		
+    }
 	public static function getDriver($id) {
 		// Get a db connection.
 		$db = JFactory::getDbo();

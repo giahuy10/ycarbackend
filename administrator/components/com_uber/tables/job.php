@@ -216,7 +216,7 @@ class UberTablejob extends JTable
 			"en" => "YCar - Có chuyến xe mới!"
 			);
 		$content = array(
-			"en" => "Chuyến xe từ ".$item->pick_up_location." đi ".$item->drop_location." - ".number_format($item->fee)." vnđ"
+			"en" => "Chuyến xe từ ".$item->pick_up_location." đi ".$item->drop_location." | ".number_format($item->fee)." vnđ"
 			);	
 		
 		$fields = array(

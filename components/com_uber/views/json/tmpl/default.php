@@ -21,11 +21,21 @@ $jinput = JFactory::getApplication()->input;
 $task = $jinput->get('task');
 $contents = file_get_contents("php://input");
 $requests = json_decode($contents);
+//$requests->user_id = 5;
+
+$driver_id = $requests->user_id;
+if ($driver_id) {
+    $player_ids = UberHelpersUber::get_player_id($driver_id);
+}
 function format_price($price) {
 	$price = number_format($price)."đ";
 	return $price; 
 }
 switch ($task) {
+    case "balance":
+         $profile = new stdClass();
+        $profile->balance = UberHelpersUber::get_balance_id($requests->user_id);
+        echo json_encode($profile);
     case "test":
              //UberHelpersUber::get_job_time(5,'2017-10-17 14:11:00');
            
@@ -34,9 +44,39 @@ switch ($task) {
         $profile = new stdClass();
         $profile->driver_id = $requests->user_id;
          $profile->player_id = $requests->player_id;
-        	$result6 = JFactory::getDbo()->insertObject('#__uber_playerid', $profile);
+         $check_player_id = UberHelpersUber::check_player_id($profile->driver_id,$profile->player_id);
+         if (!$check_player_id) {
+             	$result6 = JFactory::getDbo()->insertObject('#__uber_playerid', $profile);
+         }
+        
         echo json_encode($profile);
         break; // END SAVE PLAYER ID
+    case "removeplayerid": //START SAVE PLAYER ID
+       
+     
+         $db = JFactory::getDbo();
+
+        $query = $db->getQuery(true);
+        
+        // delete all custom keys for user 1001.
+        $conditions = array(
+            $db->quoteName('driver_id') . ' = '.$requests->user_id, 
+            $db->quoteName('player_id') . ' = ' . $db->quote($requests->player_id)
+        );
+        
+        $query->delete($db->quoteName('#__uber_playerid'));
+        $query->where($conditions);
+        
+        $db->setQuery($query);
+        
+        $result = $db->execute();
+         
+        $response->res_type=1;
+		$response->res_message="Xoa ok";
+		
+		echo json_encode($response);
+       
+        break; // END SAVE PLAYER ID    
 	case "news": // START NEWS
 		$db    = JFactory::getDbo();
 			  $query = $db->getQuery(true)
@@ -217,6 +257,7 @@ switch ($task) {
 			$job_bought = $db->loadObjectList();
 			$data=[];
 			foreach ($job_bought as $item) {
+			    $item->seats= UberHelpersUber::get_seat_text($item->number_seat);
 			    	$item->ycarfee = format_price($item->sale_price-$item->fee); $item->pick_up_time =  date ("G:i - d/m/Y",strtotime($item->pick_up_time))	;
 				$item->sale_price = format_price($item->sale_price);
 				$item->fee = format_price($item->fee);			
@@ -226,7 +267,7 @@ switch ($task) {
 					if ($item->way == 2) {
             				$item->title.=" (2 chiều)";
             			}
-				$item->ycarfee = $item->sale_price - $item->fee;
+				//$item->ycarfee = $item->sale_price - $item->fee;
 				$item->take_client_text ="Đối tác vui lòng bấm vào nút Đón Khách khi đã đón được khách";
 				$data[]=$item;
 			}
@@ -258,6 +299,8 @@ switch ($task) {
 			$job_bought = $db->loadObjectList();
 			$data=[];
 			foreach ($job_bought as $item) {
+			    
+			   $item->seats= UberHelpersUber::get_seat_text($item->number_seat);
 			    $check_error_time = UberHelpersUber::get_job_time($driver_id,$item->pick_up_time);	
 				if ($item->title=="") {
 					$item->title = $item->pick_up_location." → ".$item->drop_location;
@@ -281,7 +324,7 @@ switch ($task) {
         		$item->finalDate = strtotime($item->finalDate);
         		$item->can_buy = "ok";	
         		if ($driver_seats < $item->number_seat) {
-        		    $item->can_buy = 'Xe cua ban khong du cho';
+        		    $item->can_buy = 'Xe của bạn không đủ chỗ';
         			$item->button = "disable hidden";
         		}elseif ($item->driver_id) {
         			$item->can_buy = 'Đã có tài xế mua chuyến xe này';
@@ -290,7 +333,7 @@ switch ($task) {
         		    	$item->can_buy = 'Chuyến xe chưa được bán';
         			$item->button = "disable hidden";
         		}elseif ($check_error_time) {
-        		    $item->can_buy = 'Ban da mua chuyen so '.$check_error_time.' trung voi khung gio chuyen di nay';
+        		    $item->can_buy = 'Bạn đã mua chuyến số '.$check_error_time.' trùng với khung giờ chuyến xe này';
         			$item->button = "disable hidden";
         		}
         		else {
@@ -399,6 +442,7 @@ switch ($task) {
 			$job_bought = $db->loadObjectList();
 			$data=[];
 			foreach ($job_bought as $item) {
+			    $item->seats= UberHelpersUber::get_seat_text($item->number_seat);
 			    	$item->ycarfee = format_price($item->sale_price-$item->fee); $item->pick_up_time =  date ("G:i - d/m/Y",strtotime($item->pick_up_time))	;
 				$item->sale_price = format_price($item->sale_price);
 				$item->fee = format_price($item->fee);			
@@ -466,7 +510,7 @@ switch ($task) {
 		$job_id = $requests->job_id;
 		$driver_id = $requests->user_id;
 		$job_detail = UberHelpersUber::get_job_detail($job_id);
-		
+		$driver_detail = UberHelpersUber::get_driver_detail($driver_id);
 		if (!$job_detail->driver_id) {
 			$user       = JFactory::getUser($driver_id);
 			$balance = UberHelpersUber::get_balance($user->username);
@@ -520,40 +564,24 @@ switch ($task) {
 				$mailer->isHtml(true);
 				$mailer->setBody($body);
 				$send = $mailer->Send();
-				/*		
-				$APIKey="D244732ABEDFAB68EF9A37E344FE96";
-				$SecretKey="4D3EB6856F60EA6148A2A76925701C";
-				$YourPhone="0906147557";
-				$Content="Co tai xe mua chuyen di ".$user->username;
+		
 				
-				$SendContent=urlencode($Content);
-				$data="http://rest.esms.vn/MainService.svc/json/SendMultipleMessage_V4_get?Phone=$YourPhone&ApiKey=$APIKey&SecretKey=$SecretKey&Content=$SendContent&SmsType=4";
-				
-				$curl = curl_init($data); 
-				curl_setopt($curl, CURLOPT_FAILONERROR, true); 
-				curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true); 
-				curl_setopt($curl, CURLOPT_RETURNTRANSFER, true); 
-				$result = curl_exec($curl); 
-					
-				$obj = json_decode($result,true);
-				if($obj['CodeResult']==100)
-				{
-					print "<br>";
-					print "CodeResult:".$obj['CodeResult'];
-					print "<br>";
-					print "CountRegenerate:".$obj['CountRegenerate'];
-					print "<br>";     
-					print "SMSID:".$obj['SMSID'];
-					print "<br>";
+			
+				$message = "Tai xe YCAR ".$driver_detail->title.", BKS: ".$driver_detail->number_plates.", DT: ".$driver_detail->phone." da nhan chuyen xe ma ".$job_id.". Tai xe se don quy khach luc ".date ("G:i - d/m/Y",strtotime($job_detail->pick_up_time)).". Hotline: 0917999941.";
+				UberHelpersUber::send_sms($job_detail->customer_phone,$message);
+			    	$title = "Thay đổi số dư tài khoản";
+				if ($fee >= 0) {
+				    $content = "-".format_price(abs($fee));
+				}else {
+				    $content = "+".format_price(abs($fee));
 				}
-				else
-				{
-					print "ErrorMessage:".$obj['ErrorMessage'];
-				}
-				*/
+			    $content.=" : Mua chuyến xe CX".$job_id;
 				
+				UberHelpersUber::sendMessage($title,$content,$player_ids);
 				$response->res_type=1;
 				$response->res_message="Chúc mừng: Chuyến xe đã là của bạn. Vui lòng xem thông tin khách hàng tại mục Chuyến xe đã mua";
+				
+				
 			}else {
 				$response->res_type=2;
 			$response->res_message="Rất tiếc: Tài khoản của bạn không đủ để mua chuyến xe này. Xin vui lòng nạp thêm. Liên hệ 0917999941";

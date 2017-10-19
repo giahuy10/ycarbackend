@@ -219,7 +219,18 @@ class UberTablehistory extends JTable
 				$object->id = $this->job_id;
 				$object->driver_id = 0;
 				$result = JFactory::getDbo()->updateObject('#__uber_job', $object, 'id');
+			    
 			}
+		if ($this->confirmed == 2 && $this->resolved!=2){
+		
+        		$job_detail = UberHelper::get_job_detail($this->job_id);
+				$message = "Chuyen xe YCAR ma so ".$this->job_id." cua quy khach da duoc HUY. Moi y kien dong gop quy khach vui long lien he: 0917999941";
+				
+				UberHelper::send_sms($job_detail->customer_phone,$message);
+				$this->resolved = 1;
+				//$this->comment2 =$query->__toString();
+		    
+		}	
 		if ($this->confirmed == 1 && !$this->resolved) {
 
 			$object = new stdClass();
@@ -265,6 +276,15 @@ class UberTablehistory extends JTable
 		
 			$result2 = JFactory::getDbo()->insertObject('#__uber_transaction', $profile);
 			$this->resolved = 1;
+			$player_ids = UberHelper::get_player_id($profile->driver_id);
+				if ($profile->value >= 0) {
+				    $return_money = "+".UberHelper::format_price(abs($profile->value));
+				}else {
+				    $return_money = "-".UberHelper::format_price(abs($profile->value));
+				}
+			$title = "Xác nhận hủy chuyến xe";
+			$message ="Yêu cầu hủy chuyến xe CX".$profile->job_id." đã được xử lý. Phí chuyến xe đã được trả lại: ".$return_money;
+			UberHelper::sendMessage($title,$message,$player_ids);
 		}
 		
 
