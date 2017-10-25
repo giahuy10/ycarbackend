@@ -109,7 +109,7 @@ switch ($task) {
 	$job->ref=JRequest::getVar('ref');
 	
 	
-	if ($job->customer_name) {
+	if ($job->customer_name && $job->customer_phone) {
 		$result2 = JFactory::getDbo()->insertObject('#__uber_job', $job);
 		// Insert the object into the user profile table.
 	
