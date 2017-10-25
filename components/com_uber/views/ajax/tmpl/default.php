@@ -92,7 +92,7 @@ switch ($task) {
 	
 	$job->distance_booking=JRequest::getVar('distance_booking');
 	
-	
+	$job->check_note = "ok nay ";
 	
 	
 	
