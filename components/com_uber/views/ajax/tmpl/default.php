@@ -129,8 +129,8 @@ switch ($task) {
 	// Load the results as a list of stdClass objects (see later for more options on retrieving data).
 	$new_id = $db->loadResult();
 	
+	/*
 	
-	/*   
 	$mailer = JFactory::getMailer();
 	
 	$config = JFactory::getConfig();
@@ -214,12 +214,12 @@ switch ($task) {
 	} else {
 		echo 'Mail sent';
 	}
-	
+	*/
 	// SEND SMS:
 	$APIKey="2A00924E0B265978F73EB9B28088DF";
 	$SecretKey="C60751C63C7740DCD5F0886E3DCA18";
 	$YourPhone=JRequest::getVar('phone');
-	$Content="Quy khach da dat thanh cong chuyen xe mã ".$new_id ."  don luc ".date ("G:i - d/m/Y",strtotime(JRequest::getVar('date'))).". Giá: ".number_format($sale_price)."d. Tai xe YCAR.VN se lien he voi quy khach trong thoi gian som nhat. Hotline: 0917999941.";
+	$Content="Quy khach da dat thanh cong chuyen xe mã ".$new_id ." don luc ".date ("G:i - d/m/Y",strtotime(JRequest::getVar('date'))).". Giá: ".number_format($sale_price)."d. Tai xe YCAR.VN se lien he voi quy khach trong thoi gian som nhat. Hotline: 0917999941.";
 	
 	
 	$SendContent=urlencode($Content);
@@ -231,7 +231,7 @@ switch ($task) {
 	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true); 
 	$result = curl_exec($curl);
 	
-	*/
+	 
 			
         break;
 	case "list_job":
