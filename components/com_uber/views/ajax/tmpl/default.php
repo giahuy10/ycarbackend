@@ -51,17 +51,18 @@ switch ($task) {
 			<?php $canview = UberHelpersUber::is_bought($user->id, $item->id);
 			//echo $canview;
 			?>
+			<?php 
+			$seats = UberHelpersUber::get_seats($user->id);
+			?>
 			<div class="job-item 
 			
-			<?php if ($seats < $item->number_seat_real) echo "disable"?>">
+			<?php if ($seats < $item->number_seat) echo "disable"?>">
 				<div>
 		<?php echo UberHelpersUber::show_job_header($item)?>
 
 		
 			
-			 <?php 
-			 $seats = UberHelpersUber::get_seats($user->id);
-			 ?>
+			 
 			 
 		<?php if ($seats >= $item->number_seat) {?>
 			<?php
@@ -73,7 +74,7 @@ switch ($task) {
 			
 			if ($item->available || $currentDate > $finalDate) {?>
 			
-			<span style="color:#24336c;font-weight: bold;"><?php echo number_format($item->fee); ?> vnđ</span> 	
+			
 			<a href="index.php?option=com_uber&view=job&id=<?php echo $item->id?>" class="btn btn-info">Xem chi tiết</a>
 			<?php } else { ?>
 				<span style="color:red;font-style: italic;font-size: 12px;">Chuyến xe chưa được bán!</span>

@@ -319,6 +319,7 @@ class UberHelpersUber
 		
 			}
 		//$html .= " Chuyến xe số ".$job_detail->id.": ";
+		$html.=' <span style="color:red"><b>'.number_format($job_detail->fee).'vnđ</b></span><br/>';
 		if ($job_detail->title) 
 			$html .= $job_detail->title; 
 		else	
