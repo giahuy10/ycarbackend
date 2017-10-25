@@ -741,36 +741,10 @@ switch ($task) {
 		// SEND SMS:
 
 
-		
-		$APIKey="D244732ABEDFAB68EF9A37E344FE96";
-		$SecretKey="4D3EB6856F60EA6148A2A76925701C";
-		$YourPhone="0906147557";
-		$Content="Co tai xe mua chuyen di ".$user->username;
-		
-		$SendContent=urlencode($Content);
-		$data="http://rest.esms.vn/MainService.svc/json/SendMultipleMessage_V4_get?Phone=$YourPhone&ApiKey=$APIKey&SecretKey=$SecretKey&Content=$SendContent&SmsType=4";
-		
-		$curl = curl_init($data); 
-		curl_setopt($curl, CURLOPT_FAILONERROR, true); 
-		curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true); 
-		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true); 
-		$result = curl_exec($curl); 
-			
-		$obj = json_decode($result,true);
-		if($obj['CodeResult']==100)
-		{
-			print "<br>";
-			print "CodeResult:".$obj['CodeResult'];
-			print "<br>";
-			print "CountRegenerate:".$obj['CountRegenerate'];
-			print "<br>";     
-			print "SMSID:".$obj['SMSID'];
-			print "<br>";
-		}
-		else
-		{
-			print "ErrorMessage:".$obj['ErrorMessage'];
-		}
+		$job_detail = UberHelpersUber::get_job_detail($job_id);
+		$driver_detail = UberHelpersUber::get_driver_detail($driver_id);
+		$message = "Tai xe YCAR ".$driver_detail->title.", BKS: ".$driver_detail->number_plates.", DT: ".$driver_detail->phone." da nhan chuyen xe ma ".$job_id.". Tai xe se don quy khach luc ".date ("G:i - d/m/Y",strtotime($job_detail->pick_up_time)).". Hotline: 0917999941.";
+		UberHelpersUber::send_sms($job_detail->customer_phone,$message);
 		
 		echo "Chuyến xe đã là của bạn!";
     
