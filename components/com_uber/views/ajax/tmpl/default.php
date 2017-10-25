@@ -58,12 +58,10 @@ switch ($task) {
 		<?php echo UberHelpersUber::show_job_header($item)?>
 
 		
-			<?php if ($item->comment) {?>
-			<div class="comment" style="color:#24336c;"><i>
-			 <?php// echo $item->comment?></i>
-			</div>
-			<?php }?>
-			 
+			
+			 <?php 
+			 $seats = UberHelpersUber::get_seats($user->id);
+			 ?>
 			 
 		<?php if ($seats >= $item->number_seat_real) {?>
 			<?php
