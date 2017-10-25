@@ -257,7 +257,12 @@ switch ($task) {
 			?>
 			<div class="job-item 
 			
-			<?php if ($seats < $item->number_seat) echo "disable"?>">
+			<?php 
+			$ok_seat = 1;
+			if ($seats < $item->number_seat) {
+				echo "disable";
+				$ok_seat = 0;
+			}?>">
 				<div>
 		<?php echo UberHelpersUber::show_job_header($item)?>
 
@@ -265,7 +270,7 @@ switch ($task) {
 			
 			 
 			 
-		<?php if ($seats >= $item->number_seat) {?>
+		<?php if ($ok_seat == 1) {?>
 			<?php
 			//$date_available = strtotime($item->pick_up_time-3600);
 			//echo date("Y-m-d h:i:s",$date_available);
