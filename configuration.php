@@ -20,7 +20,7 @@ class JConfig {
 	public $debug_lang = '0';
 	public $display_offline_message = '1';
 	public $editor = 'tinymce';
-	public $error_reporting = 'none';
+	public $error_reporting = 'maximum';
 	public $feed_email = 'none';
 	public $feed_limit = '10';
 	public $force_ssl = '0';
