@@ -109,9 +109,10 @@ switch ($task) {
 	$job->ref=JRequest::getVar('ref');
 	
 	
+	if ($job->customer_name) {
+		$result2 = JFactory::getDbo()->insertObject('#__uber_job', $job);
+		// Insert the object into the user profile table.
 	
-	// Insert the object into the user profile table.
-	$result2 = JFactory::getDbo()->insertObject('#__uber_job', $job);
 	$db = JFactory::getDbo();
 	
 	// Create a new query object.
@@ -128,6 +129,8 @@ switch ($task) {
 	
 	// Load the results as a list of stdClass objects (see later for more options on retrieving data).
 	$new_id = $db->loadResult();
+	}
+	
 	
 	/*
 	

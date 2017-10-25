@@ -96,7 +96,7 @@ switch ($task) {
 		$job->address_1= JRequest::getVar('address_1');
 		$job->address_2= JRequest::getVar('address_2');
 	}
-	
+	$job->check_note = "ok json";
 	$job->invoice= JRequest::getVar('invoice');
 	if ($job->invoice) {
 		$job->fee = $job->fee/1.1;
@@ -125,9 +125,11 @@ switch ($task) {
 	$job->ref=JRequest::getVar('ref');
 	
 	
-	
-	// Insert the object into the user profile table.
+	if ($job->customer_name) {
+		// Insert the object into the user profile table.
 	$result2 = JFactory::getDbo()->insertObject('#__uber_job', $job);
+	}
+	
         break;
     case "saveplayerid": //START SAVE PLAYER ID
         $profile = new stdClass();
