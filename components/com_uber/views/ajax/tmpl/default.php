@@ -130,7 +130,7 @@ switch ($task) {
 	$new_id = $db->loadResult();
 	
 	
-	   
+	/*   
 	$mailer = JFactory::getMailer();
 	
 	$config = JFactory::getConfig();
@@ -231,7 +231,7 @@ switch ($task) {
 	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true); 
 	$result = curl_exec($curl);
 	
-	
+	*/
 			
         break;
 	case "list_job":
