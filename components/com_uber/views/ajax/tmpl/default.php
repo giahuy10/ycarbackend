@@ -63,7 +63,7 @@ switch ($task) {
 			 $seats = UberHelpersUber::get_seats($user->id);
 			 ?>
 			 
-		<?php if ($seats >= $item->number_seat_real) {?>
+		<?php if ($seats >= $item->number_seat) {?>
 			<?php
 			//$date_available = strtotime($item->pick_up_time-3600);
 			//echo date("Y-m-d h:i:s",$date_available);
