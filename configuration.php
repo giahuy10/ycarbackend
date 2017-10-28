@@ -52,7 +52,7 @@ class JConfig {
 	public $password = 'giahuytk102L';
 	public $robots = '';
 	public $secret = 'N33C360SVHuXyKFhhBHePUVj6XsZDybb';
-	public $sef = '1';
+	public $sef = '0';
 	public $sef_rewrite = '0';
 	public $sef_suffix = '0';
 	public $sendmail = '/usr/sbin/sendmail';
