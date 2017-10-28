@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
 
 $response = new stdClass();
 $user       = JFactory::getUser();
-$balance = UberHelpersUber::get_balance($user->username);
+$balance = UberHelpersUber::get_balance($user->id);
 $jinput = JFactory::getApplication()->input;
 $task = $jinput->get('task');
 $contents = file_get_contents("php://input");
@@ -34,7 +34,7 @@ function format_price($price) {
 switch ($task) {
     case "balance":
          $profile = new stdClass();
-        $profile->balance = UberHelpersUber::get_balance_id($requests->user_id);
+        $profile->balance = UberHelpersUber::get_balance($requests->user_id);
         echo json_encode($profile);
     case "client_booking":
 	$start_point = JRequest::getVar('start_point');
@@ -259,7 +259,7 @@ switch ($task) {
 					$key=md5("YCAR123124124".$result->id);
 					$user->token = hash('sha256', $key);
 					$user->user_id = $user->id;
-					$user->balance = UberHelpersUber::get_balance($user->username);
+					$user->balance = UberHelpersUber::get_balance($user->id);
 					$user->player_id = "";
 					$user->balance = format_price($user->balance);
 					 $user = json_encode($user);
@@ -604,7 +604,7 @@ switch ($task) {
 		$driver_detail = UberHelpersUber::get_driver_detail($driver_id);
 		if (!$job_detail->driver_id) {
 			$user       = JFactory::getUser($driver_id);
-			$balance = UberHelpersUber::get_balance($user->username);
+			$balance = UberHelpersUber::get_balance($user->id);
 			$fee = $job_detail->sale_price - $job_detail->fee;
 			if ($balance >= $fee) {
 				

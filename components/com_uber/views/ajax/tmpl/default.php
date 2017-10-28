@@ -14,7 +14,7 @@ defined('_JEXEC') or die;
 
 
 $user       = JFactory::getUser();
-$balance = UberHelpersUber::get_balance($user->username);
+$balance = UberHelpersUber::get_balance($user->id);
 $jinput = JFactory::getApplication()->input;
 $task = $jinput->get('task');
 $contents = file_get_contents("php://input");
@@ -341,7 +341,7 @@ switch ($task) {
 					$key=md5("YCAR123124124".$result->id);
 					$user->token = hash('sha256', $key);
 					$user->user_id = $user->id;
-					$user->balance = UberHelpersUber::get_balance($user->username);
+					$user->balance = UberHelpersUber::get_balance($user->id);
 					 $user = json_encode($user);
 					echo '{"userData": ' .$user . '}';
 				  }

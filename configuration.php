@@ -49,7 +49,7 @@ class JConfig {
 	public $offline_message = 'This site is down for maintenance.<br />Please check back again soon.';
 	public $offset = 'UTC';
 	public $offset_user = 'UTC';
-	public $password = 'giahuytk102L@';
+	public $password = 'giahuytk102L';
 	public $robots = '';
 	public $secret = 'N33C360SVHuXyKFhhBHePUVj6XsZDybb';
 	public $sef = '1';
@@ -67,7 +67,7 @@ class JConfig {
 	public $smtpuser = 'huynv@ltdvietnam.com';
 	public $tmp_path = '/home/ltdf97ac/public_html/driver/tmp';
 	public $unicodeslugs = '0';
-	public $user = 'eddy';
+	public $user = 'root';
 	public $mailonline = '1';
 	public $cache_platformprefix = '0';
 	public $shared_session = '0';

@@ -212,7 +212,7 @@ class UberHelpersUber
 	$results = number_format($results)."đ";
 	return $results;
 }
-	public static function get_balance ($username) {
+	public static function get_balance ($driver_id) {
 	$db = JFactory::getDbo();
 
 	// Create a new query object.
@@ -220,17 +220,25 @@ class UberHelpersUber
 
 	// Select all records from the user profile table where key begins with "custom.".
 	// Order it by the ordering field.
-	$query->select($db->quoteName('balance'));
-	$query->from($db->quoteName('#__uber_driver'));
-	$query->where($db->quoteName('phone') . ' = '. $db->quote($username));
+ $query->select($db->quoteName(array('type', 'value')));
+ $query->from($db->quoteName('#__uber_transaction'));
+	$query->where($db->quoteName('driver_id') . ' = '. $db->quote($driver_id));
 	
-
+$query->where($db->quoteName('state') . ' = 1');
 	// Reset the query using our newly populated query object.
 	$db->setQuery($query);
 
 	// Load the results as a list of stdClass objects (see later for more options on retrieving data).
-	$results = $db->loadResult();
-	return $results;
+	$results = $db->loadObjectlist();
+	$balance = 200000;
+	foreach ($results as $tran) {
+	    if ($tran->type == 3) {
+	        $balance = $balance - $tran->value;
+	    }else {
+	        $balance = $balance + $tran->value;
+	    }
+	}
+	return $balance;
 }
 	public static function show_customer_info($job_detail, $driver_id) {
 		$html="";
