@@ -11,7 +11,7 @@ defined('_JEXEC') or die;
 
 
 $user       = JFactory::getUser();
-$balance = UberHelpersUber::get_balance($user->username);
+$balance = UberHelpersUber::get_balance($user->id);
 
 ?>
 <h2> Lịch sử giao dịch </h2>
