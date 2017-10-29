@@ -132,7 +132,7 @@ switch ($task) {
 	}
 	
 	
-	/*
+	
 	
 	$mailer = JFactory::getMailer();
 	
@@ -217,7 +217,7 @@ switch ($task) {
 	} else {
 		echo 'Mail sent';
 	}
-	*/
+	
 	// SEND SMS:
 	$APIKey="2A00924E0B265978F73EB9B28088DF";
 	$SecretKey="C60751C63C7740DCD5F0886E3DCA18";
