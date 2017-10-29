@@ -33,7 +33,7 @@ class JConfig {
 	public $ftp_user = '';
 	public $gzip = '0';
 	public $helpurl = 'https://help.joomla.org/proxy?keyref=Help{major}{minor}:{keyref}&lang={langcode}';
-	public $host = 'localhost';
+	public $host = '45.124.94.57';
 	public $lifetime = '15';
 	public $list_limit = '20';
 	public $live_site = '';
@@ -49,7 +49,7 @@ class JConfig {
 	public $offline_message = 'This site is down for maintenance.<br />Please check back again soon.';
 	public $offset = 'UTC';
 	public $offset_user = 'UTC';
-	public $password = 'giahuytk102L';
+	public $password = 'giahuytk102L@';
 	public $robots = '';
 	public $secret = 'N33C360SVHuXyKFhhBHePUVj6XsZDybb';
 	public $sef = '0';
@@ -67,7 +67,7 @@ class JConfig {
 	public $smtpuser = 'huynv@ltdvietnam.com';
 	public $tmp_path = '/home/ltdf97ac/public_html/driver/tmp';
 	public $unicodeslugs = '0';
-	public $user = 'root';
+	public $user = 'eddyremote';
 	public $mailonline = '1';
 	public $cache_platformprefix = '0';
 	public $shared_session = '0';
